@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GustoDelivery - Mockup</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>GustoDelivery</h1>
+    <p>Gestionează comanda curentă și urmărește statusul preparatelor.</p>
+    <p class="app-count">3 preparate în comandă, 2 în preparare</p>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h2>Adaugă preparat</h2>
+      <form class="item-form">
+        <label>
+          Nume preparat
+          <input type="text" name="titlu" placeholder="Ex: Pizza Diavola" />
+        </label>
+        <label>
+          Categorie
+          <select name="eticheta">
+            <option value="principal">Fel principal</option>
+            <option value="desert">Desert</option>
+            <option value="bautura">Băutură</option>
+          </select>
+        </label>
+        <button type="submit">Adaugă în comandă</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Comanda mea</h2>
+      <ul class="item-list">
+        <li class="item-card">
+          <div>
+            <h3>Pizza Quattro Formaggi</h3>
+            <span class="badge badge-principal">Fel principal</span>
+          </div>
+          <span class="status">În preparare</span>
+        </li>
+        <li class="item-card done">
+          <div>
+            <h3>Limonadă cu mentă</h3>
+            <span class="badge badge-bautura">Băutură</span>
+          </div>
+          <span class="status">Gata de servire</span>
+        </li>
+        <li class="item-card">
+          <div>
+            <h3>Lava Cake cu înghețată</h3>
+            <span class="badge badge-desert">Desert</span>
+          </div>
+          <span class="status">În preparare</span>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="app-footer">Proiect Tehnologii Web - Etapa 1 | Restaurant Online</footer>
+</body>
+</html>

@@ -1,0 +1,220 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #fafaf9;
+  --card: #ffffff;
+  --text: #292524;
+  --muted: #78716c;
+  --accent: #ea580c;
+  --accent-dark: #c2410c;
+  --accent-soft: #ffedd5;
+  --border: #e7e5e4;
+  
+  --badge-principal-bg: #ffedd5;
+  --badge-principal-text: #9a3412;
+  --badge-desert-bg: #fce7f3;
+  --badge-desert-text: #9d174d;
+  --badge-bautura-bg: #dbeafe;
+  --badge-bautura-text: #1e40af;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c1917;
+    --card: #292524;
+    --text: #f5f5f4;
+    --muted: #a8a29e;
+    --border: #44403c;
+    --accent-soft: #431407;
+    
+    --badge-principal-bg: #7c2d12;
+    --badge-principal-text: #ffedd5;
+    --badge-desert-bg: #831843;
+    --badge-desert-text: #fce7f3;
+    --badge-bautura-bg: #1e3a8a;
+    --badge-bautura-text: #dbeafe;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app-header {
+  background: var(--accent);
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.app-header h1 {
+  margin: 0 0 10px 0;
+  font-size: 2.5rem;
+}
+
+.app-header p {
+  margin: 5px 0;
+}
+
+.app-count {
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.2);
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.panel h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: var(--text);
+}
+
+.item-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 0.9rem;
+  gap: 8px;
+}
+
+.item-form input,
+.item-form select {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.item-form button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.item-form button:hover {
+  background: var(--accent-dark);
+}
+
+.item-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  transition: all 0.2s ease;
+}
+
+.item-card:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.item-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+}
+
+.badge {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.badge-principal { background: var(--badge-principal-bg); color: var(--badge-principal-text); }
+.badge-desert { background: var(--badge-desert-bg); color: var(--badge-desert-text); }
+.badge-bautura { background: var(--badge-bautura-bg); color: var(--badge-bautura-text); }
+
+.status {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
+.done {
+  opacity: 0.6;
+}
+
+.done h3 {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.done .status {
+  color: var(--muted);
+}
+
+.app-footer {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 700px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
