@@ -1,72 +1,66 @@
-const comenzi = [
-  { id: 1, titlu: "Pizza Quattro Formaggi", gata: false, categorie: "principal" },
-  { id: 2, titlu: "Limonadă cu mentă", gata: true, categorie: "bautura" },
-  { id: 3, titlu: "Lava Cake cu înghețată", gata: false, categorie: "desert" }
+import { useState } from "react";
+import TaskList from "./components/TaskList.jsx";
+import "./App.css";
+
+const PREPARATE_INITIALE = [
+  { id: 1, titlu: "Pizza Margherita", prioritate: "mare", gata: false },
+  { id: 2, titlu: "Paste Carbonara", prioritate: "medie", gata: true },
+  { id: 3, titlu: "Tiramisu", prioritate: "mica", gata: false }
 ];
 
+function temaInitiala() {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
 export default function App() {
-  // Calculăm automat câte comenzi mai sunt în preparare
-  const active = comenzi.filter((c) => !c.gata).length;
+  const [taskuri, setTaskuri] = useState(PREPARATE_INITIALE);
+  const [tema, setTema] = useState(temaInitiala);
+
+  function handleToggle(id) {
+    setTaskuri((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, gata: !t.gata } : t))
+    );
+  }
+
+  function handleDelete(id) {
+    setTaskuri((prev) => prev.filter((t) => t.id !== id));
+  }
+
+  function handleTema() {
+    const noua = tema === "dark" ? "light" : "dark";
+    setTema(noua);
+    document.documentElement.dataset.theme = noua;
+  }
+
+  const active = taskuri.filter((t) => !t.gata).length;
 
   return (
-    <>
-      <header className="app-header">
-        <h1>GustoDelivery</h1>
-        <p>Gestionează comanda curentă și urmărește statusul preparatelor.</p>
-        <p className="app-count">{comenzi.length} preparate în comandă, {active} în preparare</p>
+    <div className="app">
+      <header className="header">
+        <button
+          className="theme-toggle"
+          onClick={handleTema}
+          aria-pressed={tema === "dark"}
+        >
+          {tema === "dark" ? "Mod luminos" : "Mod întunecat"}
+        </button>
+        <h1>Restaurant App</h1>
+        <p>Meniul zilei și preparatele noastre.</p>
+        <p className="app-count">
+          {taskuri.length} preparate, dintre care {active} active
+        </p>
       </header>
 
-      <main className="container">
-        {/* Panoul 1: Formularul de adăugare */}
+      <main className="main">
         <section className="panel">
-          <h2>Adaugă preparat</h2>
-          <form className="item-form">
-            <label>
-              Nume preparat
-              <input type="text" name="titlu" placeholder="Ex: Pizza Diavola" />
-            </label>
-            <label>
-              Categorie
-              <select name="eticheta">
-                <option value="principal">Fel principal</option>
-                <option value="desert">Desert</option>
-                <option value="bautura">Băutură</option>
-              </select>
-            </label>
-            <button type="submit">Adaugă în comandă</button>
-          </form>
-        </section>
-
-        {/* Panoul 2: Lista comenzilor (exact cum ai făcut-o tu în HTML) */}
-        <section className="panel">
-          <h2>Comanda mea</h2>
-          <ul className="item-list">
-            <li className="item-card">
-              <div>
-                <h3>Pizza Quattro Formaggi</h3>
-                <span className="badge badge-principal">Fel principal</span>
-              </div>
-              <span className="status">În preparare</span>
-            </li>
-            <li className="item-card done">
-              <div>
-                <h3>Limonadă cu mentă</h3>
-                <span className="badge badge-bautura">Băutură</span>
-              </div>
-              <span className="status">Gata de servire</span>
-            </li>
-            <li className="item-card">
-              <div>
-                <h3>Lava Cake cu înghețată</h3>
-                <span className="badge badge-desert">Desert</span>
-              </div>
-              <span className="status">În preparare</span>
-            </li>
-          </ul>
+          <h2>Preparatele mele</h2>
+          <TaskList
+            taskuri={taskuri}
+            onToggle={handleToggle}
+            onDelete={handleDelete}
+          />
         </section>
       </main>
-
-      <footer className="app-footer">Proiect Tehnologii Web - Etapa 3 | Restaurant Online</footer>
-    </>
+    </div>
   );
 }

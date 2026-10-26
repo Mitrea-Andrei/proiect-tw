@@ -39,3 +39,16 @@ Open `index.html` in a browser. No build step, no server.
 | S1-R6 | 2 columns on desktop, 1 under 700px | [style.css](https://github.com/Mitrea-Andrei/proiect-tw/blob/f06d3c6b1bf3a0eb86c0ed1dbef27125935b4034/style.css#L212-L216) | resize < 700px (@media) |
 | S1-R7 | visible focus, readable dark theme | [style.css](https://github.com/Mitrea-Andrei/proiect-tw/blob/f06d3c6b1bf3a0eb86c0ed1dbef27125935b4034/style.css#L207-L210) | Tab; dark mode |
 | S1-R8 | commit "Stage 1" pushed | [Commit history](https://github.com/Mitrea-Andrei/proiect-tw/commit/f06d3c6b1bf3a0eb86c0ed1dbef27125935b4034) | commit history |
+
+## Stage 5: checklist
+
+| ID | Requirement | Where (permalink) | How to check |
+| --- | --- | --- | --- |
+| S5-R1 | list kept in useState, in App | frontend/src/App.jsx#L16 | read |
+| S5-R2 | toggling changes state and card look | frontend/src/App.jsx#L19-L23, frontend/src/components/TaskCard.jsx#L10 | click a checkbox |
+| S5-R3 | delete removes the item | frontend/src/App.jsx#L25-L27, frontend/src/components/TaskCard.jsx#L21 | click Delete |
+| S5-R4 | header counter derived, not in state | frontend/src/App.jsx#L35 | toggle, watch header |
+| S5-R5 | immutable updates (no push, splice, assignment) | frontend/src/App.jsx#L20-L26 | read |
+| S5-R6 | light / dark toggle: state + data-theme on html | frontend/src/App.jsx#L29-L33, frontend/src/App.css#L10-L24 | click the button, both system themes |
+| S5-R7 | no console warnings; README + AI log | README.md, ai-log/etapa-05.md | F12, Console |
+| S5-R8 | commit "Stage 5" pushed | [Înlocuiește cu linkul tău către commit-ul de pe GitHub] | commit history |

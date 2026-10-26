@@ -1,165 +1,142 @@
-/* Reset și stiluri generale */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+:root {
+  --bg: #f4f4f9;
+  --card: #ffffff;
+  --text: #333333;
+  --border: #e1e4e8;
+  --accent: #0070f3;
+  --mare: #d9480f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14121d;
+    --card: #1e1b2e;
+    --text: #e5e7eb;
+    --border: #352f4d;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #14121d;
+  --card: #1e1b2e;
+  --text: #e5e7eb;
+  --border: #352f4d;
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
-  line-height: 1.6;
+  font-family: Arial, sans-serif;
+  background-color: var(--bg);
+  margin: 0;
+  padding: 20px;
+  color: var(--text);
 }
 
-/* Antetul aplicației */
-.app-header {
-  background: linear-gradient(135deg, #ff6b6b, #ff8e53);
-  color: white;
-  padding: 32px 16px;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.app-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 8px;
-  font-weight: 700;
-}
-
-.app-header p {
-  font-size: 1.1rem;
-  opacity: 0.9;
-  margin-bottom: 12px;
-}
-
-.app-count {
-  display: inline-block;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
-/* Layout container cu DOUĂ coloane */
-.container {
-  max-width: 1000px;
-  margin: 24px auto;
-  padding: 0 16px;
-  display: grid;
-  grid-template-columns: 1fr 1fr; 
-  gap: 24px;
-  align-items: start;
-}
-
-/* Panouri */
-.panel {
-  background: white;
-  padding: 24px;
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--card);
+  padding: 20px 30px;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  border: 1px solid #eaeaea;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-.panel h2 {
-  font-size: 1.5rem;
-  margin-bottom: 16px;
-  color: #2c3e50;
-  border-bottom: 2px solid #f1f1f1;
-  padding-bottom: 8px;
-}
-
-/* Formularul de adăugare */
-.item-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.item-form label {
-  display: flex;
-  flex-direction: column;
-  font-weight: 600;
-  gap: 8px;
-  font-size: 0.95rem;
-}
-
-.item-form input, .item-form select {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-
-.item-form button {
-  background-color: #ff6b6b;
+.header {
+  position: relative;
+  background: linear-gradient(135deg, #6b46c1, #553c9a);
   color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: bold;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.header h1 {
+  color: white !important;
+  margin-top: 0;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  font-size: 0.9rem;
   cursor: pointer;
-  transition: background 0.3s;
-  margin-top: 8px;
 }
 
-.item-form button:hover {
-  background-color: #ff4757;
+.theme-toggle:hover { 
+  background: rgba(255, 255, 255, 0.15); 
 }
 
-/* Lista de comenzi */
-.item-list {
+.task-list {
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  padding: 0;
+  margin: 0;
 }
 
-.item-card {
+.task-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f8f9fa;
-  padding: 16px;
+}
+
+.task-main { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  cursor: pointer; 
+}
+
+.task-main input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.task-main h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  color: var(--text);
+}
+
+.task-card.done h3 {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.btn-danger {
+  border: 1px solid var(--mare);
+  background: transparent;
+  color: var(--mare);
   border-radius: 8px;
-  border-left: 5px solid #ff6b6b;
+  padding: 6px 12px;
+  font: inherit;
+  cursor: pointer;
 }
 
-.item-card.done {
-  border-left-color: #2ed573;
+.btn-danger:hover { 
+  background: var(--mare); 
+  color: #fff; 
 }
 
-.item-card h3 {
-  font-size: 1.1rem;
-  margin-bottom: 8px;
-}
-
-/* Etichete categorii */
 .badge {
-  font-size: 0.8rem;
-  padding: 4px 8px;
+  display: inline-block;
+  padding: 3px 10px;
   border-radius: 12px;
-  color: white;
+  font-size: 12px;
   font-weight: bold;
 }
-
-.badge-principal { background: #3742fa; }
-.badge-desert { background: #ff4757; }
-.badge-bautura { background: #1e90ff; }
-
-.status {
-  font-size: 0.9rem;
-  font-weight: bold;
-  color: #57606f;
-}
-
-/* Subsol */
-.app-footer {
-  text-align: center;
-  padding: 24px;
-  color: #747d8c;
-  font-size: 0.9rem;
-  margin-top: 40px;
-}
+.badge-mica { background-color: #e2f0cb; color: #385e00; }
+.badge-medie { background-color: #fff3cd; color: #856404; }
+.badge-mare { background-color: #ffe5d0; color: #d9480f; }
