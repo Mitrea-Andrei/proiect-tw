@@ -1,11 +1,10 @@
-### Tabelul de verificare al Etapei 3
+# AI Log - Etapa 3
 
-| ID | Requirement | Where (permalink) | How to check |
-| :--- | :--- | :--- | :--- |
-| S3-R1 | npm run dev starts without errors | frontend/package.json | npm install, npm run dev |
-| S3-R2 | app name and counter computed from data | frontend/src/App.jsx#L..-L.. | edit data, save |
-| S3-R3 | data from README, not from the example | frontend/src/App.jsx#L..-L.. | compare with README |
-| S3-R4 | stage 1 styles reused | frontend/src/App.css | look at the page |
-| S3-R5 | node_modules ignored, build passes | frontend/.gitignore | npm run build |
-| S3-R6 | README Stage 3 section + AI log | README.md, ai-log/etapa-03.md | read |
-| S3-R7 | commit "Stage 3" pushed | link to the commit | commit history |
+**Context:** Trecerea de la fișiere statice la un proiect React folosind Vite.
+
+**Prompturi principale și ajutor primit:**
+- Am solicitat pașii pentru crearea proiectului React cu Vite. AI-ul mi-a oferit comanda pentru structura inițială (`npm create vite@latest frontend...`).
+- Am cerut ajutor pentru a muta codul HTML din etapa 2 în `App.jsx`. AI-ul m-a ajutat să convertesc corect sintaxa din HTML în JSX (ex. `class` în `className`).
+- Am mutat stilurile statice în `App.css` și am verificat funcționarea serverului local.
+
+**Rezultat:** Proiectul rulează cu succes pe `localhost:5173` având structura de bază React și Vite.
